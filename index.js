@@ -1,20 +1,22 @@
-require('dotenv').config()
-const express = require('express')
+require("dotenv").config();
+const express = require("express");
 const app = express();
-const cors = require('cors')
-const pool = require("./config")
-const taskRouter = require("./routes")
+const cors = require("cors");
+const pool = require("./config");
+const taskRouter = require("./routes");
 
 //middleware
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("hello backend");
+});
 
 /* Routes */
 
-app.use('/tasks', taskRouter)
+app.use("/tasks", taskRouter);
 
+const port = process.env.PORT;
 
-const port = process.env.PORT
-
-app.listen (port, ()=> console.log(`Server listening at port ${port}`))
+app.listen(port, () => console.log(`Server listening at port ${port}`));
