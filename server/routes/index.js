@@ -11,7 +11,7 @@ taskRouter.post("/", async (req, res) => {
       "INSERT INTO tasktable (tasks) VALUES($1) RETURNING *",
       [tasks]
     );
-    res.json(newTask.rows[0]);
+    res.json(newTask.rows);
   } catch (error) {
     console.log(error.message);
   }
