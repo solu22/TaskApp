@@ -1,0 +1,30 @@
+POST http://localhost:3001/tasks 
+Content-Type: application/json
+
+{
+"tasks": "code"
+}
+
+###
+
+GET http://localhost:3001/tasks
+Content-Type: application/json
+
+###
+
+GET http://localhost:3001/tasks/3
+Content-Type: application/json
+
+###
+PUT http://localhost:3001/tasks/1 
+Content-Type: application/json
+
+{
+"tasks": "sleep"
+}
+
+###
+DELETE  http://localhost:3001/tasks/5
+Content-Type: application/json
+
+
