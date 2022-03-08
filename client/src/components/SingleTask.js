@@ -1,7 +1,8 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import {Button, ListItem, ListItemButton } from "@mui/material";
+import {ListItem, ListItemButton } from "@mui/material";
 import { ListItemText } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 import EditTask from "./EditTask";
 import DeleteTask from "./DeleteTask";
@@ -46,18 +47,20 @@ const SingleTask = ({
   return (
     <>
       <ListItem ref={dragRef}>
-        <ListItemButton component = {Link} to = {`/id`}>
+        <ListItemButton component = {Link} to = {`/id`} style={{cursor:'pointer'}}>
+          <MenuIcon style={{color:'white'}}/>
           <ListItemText
             primary={task.tasks}
             style={{
               textAlign: "left",
               color: "#EEEEEE",
-              border: "1px solid",
+              border: "1px solid black",
               padding: "10px",
-              boxShadow: "5px 10px 20px ",
+              boxShadow: "5px 10px 20px orange ",
               marginBottom: "10px",
               marginLeft: "10px",
               opacity: { opacity },
+              
             }}
           />
         </ListItemButton>
