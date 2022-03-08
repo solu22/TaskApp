@@ -1,20 +1,20 @@
-
-
-import axios from 'axios'
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import Button from '@mui/material/Button';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import CloseIcon from '@mui/icons-material/Close';
-import Slide from '@mui/material/Slide';
-import { baseUrl } from "../api";
+import axios from "axios";
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import CloseIcon from "@mui/icons-material/Close";
+import Slide from "@mui/material/Slide";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+
+import { baseUrl } from "../api";
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -48,7 +48,13 @@ const EditTask = ({ task, setData, data }) => {
 
   return (
     <div>
-      <Button color="primary" size="small" variant="contained" onClick={handleClickOpen} style={{marginRight:'10px'}}>
+      <Button
+        color="primary"
+        size="small"
+        variant="contained"
+        onClick={handleClickOpen}
+        style={{ marginLeft: "7px" }}
+      >
         <ModeEditIcon />
       </Button>
       <Dialog
@@ -96,29 +102,4 @@ const EditTask = ({ task, setData, data }) => {
   );
 };
 
-export default EditTask
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default EditTask;

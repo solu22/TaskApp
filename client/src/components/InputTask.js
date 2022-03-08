@@ -1,14 +1,11 @@
-
+import axios from "axios";
 import FormControl from "@mui/material/FormControl";
 import Box from "@mui/material/Box";
 import OutlinedInput from "@mui/material/OutlinedInput";
 
-
-
-import axios from "axios";
 import React, { useState } from "react";
 import { baseUrl } from "../api";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 const InputTask = () => {
   const [task, setTask] = useState("");
@@ -26,7 +23,9 @@ const InputTask = () => {
 
   return (
     <>
-      <h1 style={{ color: "black" }}>Task App</h1>
+      <Typography fontFamily="cursive" variant="h3" mb={6}>
+        Task App
+      </Typography>
 
       <Box component="form" noValidate autoComplete="off" textAlign="center">
         <FormControl sx={{ width: "25ch" }}>
@@ -36,13 +35,18 @@ const InputTask = () => {
             value={task}
             className="form-control"
             onChange={(e) => setTask(e.target.value)}
-          /><br></br>
-          <Button type="submit" onClick={addTask} variant="contained" color="success">
+          />
+          <br></br>
+          <Button
+            type="submit"
+            onClick={addTask}
+            variant="contained"
+            color="success"
+          >
             Add Task
           </Button>
         </FormControl>
       </Box>
-
     </>
   );
 };

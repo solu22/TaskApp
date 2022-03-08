@@ -1,16 +1,17 @@
-import axios from 'axios'
-import * as React from 'react';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import Button from '@mui/material/Button';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import CloseIcon from '@mui/icons-material/Close';
-import Slide from '@mui/material/Slide';
-import { baseUrl } from "../api";
+import axios from "axios";
+import * as React from "react";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import CloseIcon from "@mui/icons-material/Close";
+import Slide from "@mui/material/Slide";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+
+import { baseUrl } from "../api";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -27,12 +28,12 @@ const DeleteTask = ({ task, setData, data }) => {
     setOpen(false);
   };
 
- const handleDelete = async (id, e) => {
+  const handleDelete = async (id, e) => {
     e.preventDefault();
     try {
       await axios.delete(`${baseUrl}/${id}`);
       setData(data.filter((d) => d.task_id !== id));
-      handleClose()
+      handleClose();
     } catch (error) {
       console.log(error.message);
     }
@@ -40,7 +41,13 @@ const DeleteTask = ({ task, setData, data }) => {
 
   return (
     <div>
-      <Button color="error"  size ="small" variant="contained" onClick={handleClickOpen}>
+      <Button
+        color="error"
+        size="small"
+        variant="contained"
+        onClick={handleClickOpen}
+        style={{ marginLeft: "7px" }}
+      >
         <DeleteForeverIcon
           style={{
             minWidth: "20px",
@@ -54,7 +61,10 @@ const DeleteTask = ({ task, setData, data }) => {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: "relative" }} style={{backgroundColor:'red'}}>
+        <AppBar
+          sx={{ position: "relative" }}
+          style={{ backgroundColor: "red" }}
+        >
           <Toolbar>
             <IconButton
               edge="start"
@@ -85,29 +95,4 @@ const DeleteTask = ({ task, setData, data }) => {
   );
 };
 
-export default DeleteTask
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default DeleteTask;
