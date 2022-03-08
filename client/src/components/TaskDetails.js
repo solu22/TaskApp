@@ -28,9 +28,8 @@ const TaskDetails = () => {
 }
     useEffect(()=>{
         fetchTaskDetails()
-    },[])
+    },[task])
     
-    console.log('--->>>>', task)
    
 
     return (

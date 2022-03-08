@@ -86,7 +86,7 @@ const ListTasks = () => {
             <Loader /> Active Task
             <p>{data.length === 0 && message}</p>
           </Typography>
-          <List>
+          <List style={{maxWidth:'41vw'}}>
             {data?.map((task, i) => (
               <SingleTask
                 task={task}

@@ -40,14 +40,12 @@ const SingleTask = ({
 
   const opacity = isDragging ? 0.4 : 1;
   
-  // const LinkToSingleTask = ()=>{
-  //   return <Link to = `${}`/>
-  // }
+
 
   return (
     <>
-      <ListItem ref={dragRef}>
-        <ListItemButton component = {Link} to = {`/id`} style={{cursor:'pointer'}}>
+      <ListItem ref={dragRef} style={{width:'100%'}}>
+        <ListItemButton component = {Link} to = {`/${task.task_id}`} style={{cursor:'pointer'}}>
           <MenuIcon style={{color:'white'}}/>
           <ListItemText
             primary={task.tasks}

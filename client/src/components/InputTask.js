@@ -28,9 +28,9 @@ const InputTask = () => {
       </Typography>
 
       <Box component="form" noValidate autoComplete="off" textAlign="center">
-        <FormControl sx={{ width: "35ch" }}>
+        <FormControl sx={{ width: "30ch" }}>
           <OutlinedInput
-            placeholder="Enter a task to assign and do drag and drop"
+            placeholder="Enter a task for drag and drop"
             type="text"
             value={task}
             className="form-control"
