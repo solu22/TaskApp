@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDrop } from "react-dnd";
-import { Container, Grid, Typography } from "@mui/material";
-import List from "@mui/material/List";
+import { Container, Grid, Typography, List } from "@mui/material";
 import InputTask from "./InputTask";
 import Loader from "./Loader";
 import { baseUrl } from "../api";
@@ -13,33 +12,33 @@ const ListTasks = () => {
   const [completedTask, setCompletedTask] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [state, setState] = useState({});
-  const [ message, setMessage] = useState(null)
-  
-    const fetchTasks = async () => {
-      try {
-        const response = await axios.get(baseUrl);
-        setData(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
+  const [message, setMessage] = useState(null);
 
-    const cleanUpFunc = () =>{
-      setState({
-        name:'for-clean-up'
-      })
+  const fetchTasks = async () => {
+    try {
+      const response = await axios.get(baseUrl);
+      setData(response.data);
+    } catch (error) {
+      console.log(error.message);
     }
+  };
+
+  const cleanUpFunc = () => {
+    setState({
+      name: "for-clean-up",
+    });
+  };
 
   useEffect(() => {
-  
     fetchTasks();
-    cleanUpFunc()
-    return ()=>{ setState({})}
+    cleanUpFunc();
+    return () => {
+      setState({});
+    };
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
-// eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const [{ isOver }, addToCompletedTaskRef] = useDrop({
     accept: "current_task",
     collect: (monitor) => ({
@@ -58,7 +57,7 @@ const ListTasks = () => {
   const moveCurrentToCompleted = (task) => {
     setData((prev) => prev.filter((_, i) => i !== task.index));
     setCompletedTask((prev) => [...prev, task]);
-    setMessage('Congratulations !! All task done')
+    setMessage("Congratulations !! All task done");
   };
 
   const removeFromCompleted = (task) => {
@@ -67,12 +66,12 @@ const ListTasks = () => {
   };
 
   return (
-    <Container>
+    <Container style={{ textAlign: "center" }}>
       <InputTask />
       <Grid
         container
-        justifyContent="center"
-        style={{ marginTop: "5%", gap: 15 }}
+        justifyContent="space-between"
+        style={{ marginTop: "5%", gap: 15, backgroundColor: "orange" }}
       >
         <Grid
           style={{ backgroundColor: "#9F1E49" }}
@@ -86,7 +85,8 @@ const ListTasks = () => {
             <Loader /> Active Task
             <p>{data.length === 0 && message}</p>
           </Typography>
-          <List style={{maxWidth:'41vw'}}>
+
+          <List>
             {data?.map((task, i) => (
               <SingleTask
                 task={task}
@@ -104,7 +104,7 @@ const ListTasks = () => {
         <Grid
           item
           xs
-          style={{ backgroundColor: "#019267" }}
+          style={{ backgroundColor: "#019267", width: "50%" }}
           ref={addToCompletedTaskRef}
         >
           <Typography
@@ -121,11 +121,10 @@ const ListTasks = () => {
                 task={task}
                 key={task.task_id}
                 data={data}
-                setData={setData}
-                setCompletedTask={setCompletedTask}
-                index={i}
-                type="completed_task"
+                setData={setCompletedTask}
                 onDropTask={removeFromCompleted}
+                type="completed_task"
+                index={i}
               />
             ))}
           </List>

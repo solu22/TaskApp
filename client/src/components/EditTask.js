@@ -15,7 +15,6 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
 import { baseUrl } from "../api";
 
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -53,7 +52,6 @@ const EditTask = ({ task, setData, data }) => {
         size="small"
         variant="contained"
         onClick={handleClickOpen}
-        style={{ marginLeft: "7px" }}
       >
         <ModeEditIcon />
       </Button>
